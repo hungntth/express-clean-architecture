@@ -1,0 +1,37 @@
+{
+  "name": "express-clean-architecture",
+  "version": "1.0.0",
+  "description": "As the project uses Yarn zero-install, there is no need to install the dependencies.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsoa spec-and-routes",
+    "dev": "concurrently 'nodemon' 'nodemon -x tsoa spec-and-routes'",
+    "lint": "prettier --check ."
+  },
+  "repository": "git+https://github.com/hungntth/express-clean-architecture.git",
+  "keywords": [],
+  "author": "hungntth <1119thaihungnguyen@gmail.com>",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/hungntth/express-clean-architecture/issues"
+  },
+  "homepage": "https://github.com/hungntth/express-clean-architecture#readme",
+  "dependencies": {
+    "@tsoa/runtime": "^6.6.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "swagger-ui-express": "^5.0.1",
+    "tsoa": "^6.6.0",
+    "uuid": "^11.1.0",
+    "zod": "^3.25.48"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.2",
+    "@types/swagger-ui-express": "^4.1.8",
+    "concurrently": "^9.1.2",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
