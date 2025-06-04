@@ -1,7 +1,8 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { IBook } from '../../../../core/interfaces/book.interface';
 
 @Entity('books')
-class Book {
+class BookEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -23,6 +24,16 @@ class Book {
     default: () => 'CURRENT_TIMESTAMP',
   })
   createdAt: Date;
+
+  mapperDomainEntity(): IBook {
+    return {
+      id: this.id,
+      title: this.title,
+      summary: this.summary,
+      author: this.author,
+      totalPages: this.totalPages,
+    };
+  }
 }
 
-export default Book;
+export default BookEntity;
