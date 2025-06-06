@@ -1,22 +1,23 @@
 import { container } from 'tsyringe';
-import { BookRepository } from '../ports/iRepository/IBookRepository';
+import IBookRepository from '../ports/iRepository/IBookRepository';
 import Logger from '../ports/logger.port';
 import { IBook } from '../interfaces/book.interface';
+import { CreateBookPayload } from '../ports/payloads/book.payload';
 
 class CreateBookUseCase {
-  private bookRepository: BookRepository;
+  private bookRepository: IBookRepository;
   private logger: Logger;
 
   constructor() {
     this.logger = container.resolve<Logger>('Logger');
-    this.bookRepository = container.resolve<BookRepository>('BookRepository');
+    this.bookRepository = container.resolve<IBookRepository>('IBookRepository');
   }
 
-  async execute(bookData: IBook): Promise<IBook> {
+  async execute(bookData: CreateBookPayload): Promise<IBook> {
     this.logger.debug('Executing CreateBook use case');
 
     const book = await this.bookRepository.save(bookData);
-    this.logger.info(`Book with id ${bookData.id} created successfully`);
+    this.logger.info(`Book with id ${book.id} created successfully`);
 
     return book;
   }

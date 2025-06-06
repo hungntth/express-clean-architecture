@@ -2,7 +2,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { IBook } from '../../../../core/interfaces/book.interface';
 
 @Entity('books')
-class BookEntity {
+export default class BookEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -35,5 +35,3 @@ class BookEntity {
     };
   }
 }
-
-export default BookEntity;

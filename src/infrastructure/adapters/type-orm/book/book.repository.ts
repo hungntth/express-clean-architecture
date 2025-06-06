@@ -1,5 +1,5 @@
 import { IBook } from '../../../../core/interfaces/book.interface';
-import { BookRepository } from '../../../../core/ports/iRepository/IBookRepository';
+import IBookRepository from '../../../../core/ports/iRepository/IBookRepository';
 import {
   CreateBookPayload,
   UpdateBookPayload,
@@ -7,7 +7,7 @@ import {
 import { AppDataSource, isInitialized } from '../data-source';
 import BookEntity from './book.entity';
 
-class TypeOrmRepository implements BookRepository {
+class BookRepositoryORM implements IBookRepository {
   async findById(id: string): Promise<IBook | null> {
     await isInitialized();
 
@@ -20,7 +20,7 @@ class TypeOrmRepository implements BookRepository {
 
   async findAll(): Promise<IBook[]> {
     await isInitialized();
-
+    console.log('test');
     const books = await AppDataSource.getRepository(BookEntity).find();
     return books.map((book) => book.mapperDomainEntity());
   }
@@ -57,4 +57,4 @@ class TypeOrmRepository implements BookRepository {
   }
 }
 
-export default TypeOrmRepository;
+export default BookRepositoryORM;

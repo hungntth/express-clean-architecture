@@ -9,16 +9,13 @@ import {
   SuccessResponse,
   Tags,
 } from 'tsoa';
-import { v4 as uuidv4 } from 'uuid';
+import { CreateBookPayload } from '../../../../core/ports/payloads/book.payload';
+import CreateBookUseCase from '../../../../core/use-cases/create-book.use-case';
+import DeleteBookUseCase from '../../../../core/use-cases/delete-book.use-case';
+import GetBookUseCase from '../../../../core/use-cases/get-book.use-case';
+import ListBooksUseCase from '../../../../core/use-cases/list-books.use.case';
 import { createBookCodec, getBookCodec } from './book.codec';
-import {
-  GetBookDTOModel,
-  GetBooksDTOModel,
-  PostBookDTO,
-  PostBookDTOModel,
-  PostBookInputDTO,
-  PostBookInputDTOModel,
-} from './dto';
+import { GetBookDTOModel, GetBooksDTOModel, PostBookDTOModel } from './dto';
 
 @Route('books')
 @Tags('Books')
@@ -37,30 +34,7 @@ export class BookController extends Controller {
   @Get()
   @SuccessResponse(200)
   async list(): Promise<GetBooksDTOModel> {
-    // Simulating a book list retrieval
-    return [
-      {
-        id: '1',
-        title: 'Book 1',
-        summary: 'Summary 1',
-        author: 'Author 1',
-        totalPages: 100,
-      },
-      {
-        id: '2',
-        title: 'Book 2',
-        summary: 'Summary 2',
-        author: 'Author 2',
-        totalPages: 200,
-      },
-      {
-        id: '3',
-        title: 'Book 3',
-        summary: 'Summary 3',
-        author: 'Author 3',
-        totalPages: 300,
-      },
-    ];
+    return new ListBooksUseCase().execute();
   }
 
   /**
@@ -76,14 +50,13 @@ export class BookController extends Controller {
     if (!bookId.success) {
       throw 'Invalid book ID';
     }
-    // Simulating a book retrieval by ID
-    return {
-      id,
-      title: `Book ${id}`,
-      summary: `Summary ${id}`,
-      author: `Author ${id}`,
-      totalPages: 100,
-    };
+    const book = await new GetBookUseCase().execute(bookId.data);
+
+    if (!book) {
+      throw 'Book not found';
+    }
+
+    return book;
   }
 
   /**
@@ -93,16 +66,14 @@ export class BookController extends Controller {
    */
   @Post()
   @SuccessResponse(201)
-  async create(
-    @Body() payload: PostBookInputDTOModel,
-  ): Promise<PostBookDTOModel> {
+  async create(@Body() payload: CreateBookPayload): Promise<PostBookDTOModel> {
     const decodingResuilt = createBookCodec.decode(payload);
 
     if (!decodingResuilt.success) {
       throw 'Invalid book data';
     }
     // Simulating book creation
-    return { id: uuidv4(), ...payload };
+    return await new CreateBookUseCase().execute(decodingResuilt.data);
   }
 
   /**
@@ -118,7 +89,7 @@ export class BookController extends Controller {
     if (!bookId.success) {
       throw 'Invalid book ID';
     }
-
+    await new DeleteBookUseCase().execute(bookId.data);
     // Simulating book deletion
     return;
   }

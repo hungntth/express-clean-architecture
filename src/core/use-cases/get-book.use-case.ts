@@ -1,15 +1,15 @@
 import { container } from 'tsyringe';
-import { BookRepository } from '../ports/iRepository/IBookRepository';
 import Logger from '../ports/logger.port';
 import { IBook } from '../interfaces/book.interface';
+import IBookRepository from '../ports/iRepository/IBookRepository';
 
 class GetBookUseCase {
-  private bookRepository: BookRepository;
+  private bookRepository: IBookRepository;
   private logger: Logger;
 
   constructor() {
     this.logger = container.resolve<Logger>('Logger');
-    this.bookRepository = container.resolve<BookRepository>('BookRepository');
+    this.bookRepository = container.resolve<IBookRepository>('IBookRepository');
   }
 
   async execute(bookId: string): Promise<IBook | null> {
