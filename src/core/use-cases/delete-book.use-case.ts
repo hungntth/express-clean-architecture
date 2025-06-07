@@ -1,6 +1,6 @@
 import { container } from 'tsyringe';
 import Logger from '../ports/logger.port';
-import IBookRepository from '../ports/iRepository/IBookRepository';
+import IBookRepository from '../ports/iRepository/iBookRepository';
 
 class DeleteBookUseCase {
   private bookRepository: IBookRepository;

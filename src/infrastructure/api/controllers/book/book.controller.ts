@@ -6,6 +6,7 @@ import {
   Path,
   Post,
   Route,
+  Security,
   SuccessResponse,
   Tags,
 } from 'tsoa';
@@ -19,6 +20,8 @@ import { GetBookDTOModel, GetBooksDTOModel, PostBookDTOModel } from './dto';
 
 @Route('books')
 @Tags('Books')
+@Security('jwt')
+
 /**
  * Book Controller
  */

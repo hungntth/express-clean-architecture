@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import { randomUUID } from 'crypto';
 import { IBook } from '../src/core/interfaces/book.interface';
 import { container } from 'tsyringe';
-import IBookRepository from '../src/core/ports/iRepository/IBookRepository';
+import IBookRepository from '../src/core/ports/iRepository/iBookRepository';
 import GetBookUseCase from '../src/core/use-cases/get-book.use-case';
 
 describe('GetBook', () => {

@@ -2,7 +2,7 @@ import { randomUUID } from 'crypto';
 import 'reflect-metadata';
 import { container } from 'tsyringe';
 import { IBook } from '../src/core/interfaces/book.interface';
-import IBookRepository from '../src/core/ports/iRepository/IBookRepository';
+import IBookRepository from '../src/core/ports/iRepository/iBookRepository';
 import DeleteBookUseCase from '../src/core/use-cases/delete-book.use-case';
 
 describe('DeleteBook', () => {

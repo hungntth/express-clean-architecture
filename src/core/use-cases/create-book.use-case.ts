@@ -1,5 +1,5 @@
 import { container } from 'tsyringe';
-import IBookRepository from '../ports/iRepository/IBookRepository';
+import IBookRepository from '../ports/iRepository/iBookRepository';
 import Logger from '../ports/logger.port';
 import { IBook } from '../interfaces/book.interface';
 import { CreateBookPayload } from '../ports/payloads/book.payload';

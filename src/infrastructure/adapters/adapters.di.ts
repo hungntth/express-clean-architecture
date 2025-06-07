@@ -7,7 +7,9 @@ import winstonLoggerConfig from './winston-logger/winston-logger.config';
 import Logger from '../../core/ports/logger.port';
 
 import BookRepositoryORM from './type-orm/book/book.repository';
-import IBookRepository from '../../core/ports/iRepository/IBookRepository';
+import IBookRepository from '../../core/ports/iRepository/iBookRepository';
+import { IUserRepository } from '../../core/ports/iRepository/iUserRepository';
+import UserRepositoryOrm from './type-orm/user/user.repository';
 
 container
   .register<Logger>('Logger', {
@@ -15,4 +17,7 @@ container
   })
   .register<IBookRepository>('IBookRepository', {
     useValue: new BookRepositoryORM(),
+  })
+  .register<IUserRepository>('IUserRepository', {
+    useValue: new UserRepositoryOrm(),
   });

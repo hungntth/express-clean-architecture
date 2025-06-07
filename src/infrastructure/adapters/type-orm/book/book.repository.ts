@@ -1,5 +1,5 @@
 import { IBook } from '../../../../core/interfaces/book.interface';
-import IBookRepository from '../../../../core/ports/iRepository/IBookRepository';
+import IBookRepository from '../../../../core/ports/iRepository/iBookRepository';
 import {
   CreateBookPayload,
   UpdateBookPayload,

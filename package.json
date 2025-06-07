@@ -21,9 +21,13 @@
   "homepage": "https://github.com/hungntth/express-clean-architecture#readme",
   "dependencies": {
     "@tsoa/runtime": "^6.6.0",
+    "@types/promise.any": "^2.0.3",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
     "pg": "^8.16.0",
+    "promise.any": "^2.0.6",
+    "reflect-metadata": "^0.2.2",
     "swagger-ui-express": "^5.0.1",
     "tsoa": "^6.6.0",
     "tsyringe": "^4.10.0",
@@ -36,6 +40,7 @@
   "devDependencies": {
     "@types/express": "^5.0.2",
     "@types/jest": "^29.5.14",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^22.15.30",
     "@types/pg": "^8.15.4",
     "@types/swagger-ui-express": "^4.1.8",
