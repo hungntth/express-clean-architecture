@@ -8,14 +8,14 @@ import {
   Tags,
 } from 'tsoa';
 
-import { createUserCodec } from './user.codec';
+import { createUserCodec } from '../../infrastructure/api/controllers/user/user.codec';
 
 import {
   ConflictError,
   InvalidInputError,
   NotFoundError,
-} from '../../error-handler';
-import { signin, signup } from './user.service';
+} from '../../infrastructure/api/error-handler';
+import { signin, signup } from '../../infrastructure/api/controllers/user/user.service';
 
 // For TSOA generation, use the service's param type instead of the zod model directly
 type SigninParam = Parameters<typeof signin>[0];

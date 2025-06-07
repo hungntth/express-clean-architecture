@@ -1,9 +1,9 @@
-import { IBook } from '../../../../core/interfaces/book.interface';
-import IBookRepository from '../../../../core/ports/iRepository/iBookRepository';
+import { IBook } from '@core/interfaces/book.interface';
+import IBookRepository from '@core/ports/iRepository/iBookRepository';
 import {
   CreateBookPayload,
   UpdateBookPayload,
-} from '../../../../core/ports/payloads/book.payload';
+} from '@core/ports/payloads/book.payload';
 import { AppDataSource, isInitialized } from '../data-source';
 import BookEntity from './book.entity';
 

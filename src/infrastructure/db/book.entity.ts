@@ -1,5 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { IBook } from '../../../../core/interfaces/book.interface';
+import { IBook } from '@core/interfaces/book.interface';
 
 @Entity('books')
 export default class BookEntity {

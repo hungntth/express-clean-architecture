@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-import { ExistingUser } from '../../../../core/entities/user.entity';
+import { ExistingUser } from '@core/entities/user.entity';
 
 @Entity()
 class User {

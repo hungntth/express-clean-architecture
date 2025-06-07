@@ -1,8 +1,9 @@
 import { container } from 'tsyringe';
-import Logger from '../ports/logger.port';
-import IBookRepository from '../ports/iRepository/iBookRepository';
+import Logger from '../../core/ports/logger.port';
+import { IBook } from '../../core/interfaces/book.interface';
+import IBookRepository from '../../core/ports/iRepository/iBookRepository';
 
-class DeleteBookUseCase {
+class GetBookUseCase {
   private bookRepository: IBookRepository;
   private logger: Logger;
 
@@ -11,20 +12,18 @@ class DeleteBookUseCase {
     this.bookRepository = container.resolve<IBookRepository>('IBookRepository');
   }
 
-  async execute(bookId: string): Promise<void> {
-    this.logger.debug(`Executing DeleteBook use case for bookId: ${bookId}`);
+  async execute(bookId: string): Promise<IBook | null> {
+    this.logger.debug(`Executing GetBook use case for bookId: ${bookId}`);
 
     const book = await this.bookRepository.findById(bookId);
+
     if (!book) {
       this.logger.error(`Book with id ${bookId} not found`);
       throw new Error(`Book with id ${bookId} not found`);
     }
 
-    await this.bookRepository.delete(bookId);
-    this.logger.info(`Book with id ${bookId} deleted successfully`);
-
-    return;
+    return book;
   }
 }
 
-export default DeleteBookUseCase;
+export default GetBookUseCase;

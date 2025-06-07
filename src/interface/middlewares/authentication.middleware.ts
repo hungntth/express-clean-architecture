@@ -1,14 +1,11 @@
 import * as express from 'express';
 import { container } from 'tsyringe';
 
-import { AuthenticatedContext } from '../../../core/ports/api.port';
-import {
-  ExistingUser,
-  NotExistingUser,
-} from '../../../core/entities/user.entity';
+import { AuthenticatedContext } from '@core/ports/api.port';
+import { ExistingUser, NotExistingUser } from '@core/entities/user.entity';
 
-import { UnauthorizedError } from '../error-handler';
-import { IUserRepository } from '../../../core/ports/iRepository/iUserRepository';
+import { UnauthorizedError } from '../../infrastructure/api/error-handler';
+import { IUserRepository } from 'domain/repositories/iUserRepository';
 
 export type AuthenticatedRequest = Express.Request & {
   user: AuthenticatedContext;

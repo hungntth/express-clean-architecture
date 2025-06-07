@@ -4,11 +4,11 @@ import {
   WinstonLogger,
 } from './winston-logger/winston-logger.adapter';
 import winstonLoggerConfig from './winston-logger/winston-logger.config';
-import Logger from '../../core/ports/logger.port';
+import Logger from '@core/ports/logger.port';
 
 import BookRepositoryORM from './type-orm/book/book.repository';
-import IBookRepository from '../../core/ports/iRepository/iBookRepository';
-import { IUserRepository } from '../../core/ports/iRepository/iUserRepository';
+import IBookRepository from '@core/ports/iRepository/iBookRepository';
+import { IUserRepository } from '@core/ports/iRepository/iUserRepository';
 import UserRepositoryOrm from './type-orm/user/user.repository';
 
 container

@@ -1,7 +1,7 @@
 import { container } from 'tsyringe';
-import { IUserRepository } from '../../ports/iRepository/iUserRepository';
-import Logger from '../../ports/logger.port';
-import { NotExistingUser } from '../../entities/user.entity';
+import { IUserRepository } from '@ports/iRepository/iUserRepository';
+import Logger from '@ports/logger.port';
+import { NotExistingUser } from '../../core/entities/user.entity';
 
 class SignInUserUseCase {
   private userRepository: IUserRepository;

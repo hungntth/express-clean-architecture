@@ -1,5 +1,5 @@
 import winston, { format, transports, createLogger } from 'winston';
-import Logger from '../../../core/ports/logger.port';
+import Logger from '@core/ports/logger.port';
 
 export type LogLevel =
   | 'error'

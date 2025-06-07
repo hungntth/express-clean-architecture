@@ -1,7 +1,7 @@
 import { container } from 'tsyringe';
-import Logger from '../ports/logger.port';
-import { IBook } from '../interfaces/book.interface';
-import IBookRepository from '../ports/iRepository/iBookRepository';
+import Logger from '../../core/ports/logger.port';
+import { IBook } from '../../core/interfaces/book.interface';
+import IBookRepository from '../../core/ports/iRepository/iBookRepository';
 
 class ListBooksUseCase {
   private bookRepository: IBookRepository;

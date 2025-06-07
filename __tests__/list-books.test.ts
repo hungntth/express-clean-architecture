@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { randomUUID } from 'crypto';
 import { IBook } from '../src/core/interfaces/book.interface';
-import ListBooksUseCase from '../src/core/use-cases/list-books.use.case';
+import ListBooksUseCase from '../src/use-cases/book/list-books.use.case';
 import { container } from 'tsyringe';
 import IBookRepository from '../src/core/ports/iRepository/iBookRepository';
 

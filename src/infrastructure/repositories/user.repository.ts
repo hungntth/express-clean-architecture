@@ -2,9 +2,9 @@ import { AppDataSource, isInitialized } from '../data-source';
 
 import UserDBEntity from './user.entity';
 
-import { ExistingUser } from '../../../../core/entities/user.entity';
-import { IUserRepository } from '../../../../core/ports/iRepository/iUserRepository';
-import { CreateUserPayload } from '../../../../core/ports/payloads/user.payload';
+import { ExistingUser } from '@core/entities/user.entity';
+import { IUserRepository } from '@core/ports/iRepository/iUserRepository';
+import { CreateUserPayload } from '@core/ports/payloads/user.payload';
 
 class UserRepositoryOrm implements IUserRepository {
   async create({

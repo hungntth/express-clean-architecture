@@ -1,5 +1,5 @@
-import SignInUserUseCase from '../../../../core/use-cases/user/sign-in-user.use-case';
-import SignUpUserUseCase from '../../../../core/use-cases/user/sign-up-user.use-case';
+import SignInUserUseCase from '../../../../use-cases/user/sign-in-user.use-case';
+import SignUpUserUseCase from '../../../../use-cases/user/sign-up-user.use-case';
 import { PostUsersInputDto, PostUsersOutputDto } from './dto';
 
 export const signin = (
