@@ -3,7 +3,7 @@ import { randomUUID } from 'crypto';
 import { IBook } from '../src/core/interfaces/book.interface';
 import { container } from 'tsyringe';
 import IBookRepository from '../src/core/ports/iRepository/iBookRepository';
-import GetBookUseCase from '../src/use-cases/book/get-book.use-case';
+import GetBookUseCase from '../src/core/use-cases/book/get-book.use-case';
 
 describe('GetBook', () => {
   const id: string = randomUUID();

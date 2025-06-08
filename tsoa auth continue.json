@@ -2,7 +2,7 @@
   "entryFile": "server.ts",
   "noImplicitAdditionalProperties": "throw-on-extras",
   "controllerPathGlobs": [
-    "src/interface/controllers/*.controller.ts"
+    "src/**/*.controller.ts"
   ],
   "spec": {
     "outputDirectory": "build",
@@ -24,6 +24,7 @@
     }
   },
   "routes": {
+    "authenticationModule": "./src/infrastructure/api/middlewares/authentication.middleware.ts",
     "routesDir": "build"
   }
 }

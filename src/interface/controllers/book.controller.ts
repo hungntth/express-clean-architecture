@@ -6,21 +6,19 @@ import {
   Path,
   Post,
   Route,
-  Security,
   SuccessResponse,
   Tags,
 } from 'tsoa';
-import { CreateBookPayload } from '../../core/ports/payloads/book.payload';
-import CreateBookUseCase from '../../use-cases/book/create-book.use-case';
-import DeleteBookUseCase from '../../use-cases/book/delete-book.use-case';
-import GetBookUseCase from '../../use-cases/book/get-book.use-case';
-import ListBooksUseCase from '../../use-cases/book/list-books.use.case';
-import { createBookCodec, getBookCodec } from '../../infrastructure/api/controllers/book/book.codec';
-import { GetBookDTOModel, GetBooksDTOModel, PostBookDTOModel } from '../../infrastructure/api/controllers/book/dto';
+import CreateBookUseCase from '../../core/use-cases/book/create-book.use-case';
+import DeleteBookUseCase from '../../core/use-cases/book/delete-book.use-case';
+import GetBookUseCase from '../../core/use-cases/book/get-book.use-case';
+import ListBooksUseCase from '../../core/use-cases/book/list-books.use.case';
+import { BookResponse } from '../dto/book/response/book.response';
+import { createBookCodec, getBookCodec } from '../dto/book/codec/book.codec';
+import { CreateBookDto } from '../dto/book/request/book.request';
 
 @Route('books')
 @Tags('Books')
-@Security('jwt')
 
 /**
  * Book Controller
@@ -36,7 +34,7 @@ export class BookController extends Controller {
    */
   @Get()
   @SuccessResponse(200)
-  async list(): Promise<GetBooksDTOModel> {
+  async list(): Promise<BookResponse[]> {
     return new ListBooksUseCase().execute();
   }
 
@@ -47,7 +45,7 @@ export class BookController extends Controller {
    */
   @Get('{id}')
   @SuccessResponse(200)
-  async getById(@Path() id: string): Promise<GetBookDTOModel> {
+  async getById(@Path() id: string): Promise<BookResponse> {
     const bookId = getBookCodec.decodeBookId({ id });
 
     if (!bookId.success) {
@@ -69,7 +67,7 @@ export class BookController extends Controller {
    */
   @Post()
   @SuccessResponse(201)
-  async create(@Body() payload: CreateBookPayload): Promise<PostBookDTOModel> {
+  async create(@Body() payload: CreateBookDto): Promise<BookResponse> {
     const decodingResuilt = createBookCodec.decode(payload);
 
     if (!decodingResuilt.success) {

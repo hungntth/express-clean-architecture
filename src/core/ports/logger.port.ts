@@ -1,4 +1,4 @@
-interface Logger {
+interface ILogger {
   error(message: string): void;
 
   warning(message: string): void;
@@ -8,4 +8,4 @@ interface Logger {
   debug(message: string): void;
 }
 
-export default Logger;
+export default ILogger;

@@ -5,7 +5,6 @@
      "baseUrl": "./src",
     "paths": {
       "@core/*": ["core/*"],
-      "@ports/*": ["core/ports/*"],
     },
     "lib": ["es2021", "dom"],
     "emitDecoratorMetadata": true,

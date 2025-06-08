@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import { container } from 'tsyringe';
 import IBookRepository from '../src/core/ports/iRepository/iBookRepository';
 import { CreateBookPayload } from '../src/core/ports/payloads/book.payload';
-import CreateBookUseCase from '../src/use-cases/book/create-book.use-case';
+import CreateBookUseCase from '../src/core/use-cases/book/create-book.use-case';
 
 describe('CreateBook', () => {
   const id: string = randomUUID();

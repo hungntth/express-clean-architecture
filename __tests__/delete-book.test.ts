@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import { container } from 'tsyringe';
 import { IBook } from '../src/core/interfaces/book.interface';
 import IBookRepository from '../src/core/ports/iRepository/iBookRepository';
-import DeleteBookUseCase from '../src/use-cases/book/delete-book.use-case';
+import DeleteBookUseCase from '../src/core/use-cases/book/delete-book.use-case';
 
 describe('DeleteBook', () => {
   const id: string = randomUUID();
