@@ -1,7 +1,7 @@
 const { BadRequestError } = require("../../shared/core/error.response");
 
-class User {
-  constructor(id, name, email, password) {
+class UserEntity {
+  constructor(id = undefined, name, email, password) {
     this.id = id;
     this.name = name;
     this.email = email;
@@ -9,10 +9,11 @@ class User {
   }
 
   validate() {
+    console.log("Validating user:", this);
     if (!this.email || !this.password) {
       throw new BadRequestError("Invalid user data");
     }
   }
 }
 
-module.exports = User;
+module.exports = UserEntity;

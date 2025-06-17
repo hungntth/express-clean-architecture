@@ -6,7 +6,9 @@ const config = require("../config");
 class Database {
   constructor() {
     this.sequelize = this.createConnection();
-    this.setupEventListeners();
+    if (process.env.NODE_ENV !== "test") {
+      this.setupEventListeners();
+    }
   }
 
   createConnection() {

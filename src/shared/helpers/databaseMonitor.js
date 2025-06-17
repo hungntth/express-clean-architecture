@@ -10,9 +10,11 @@ class DatabaseMonitor {
   }
 
   startMonitoring() {
-    this.monitorInterval = setInterval(() => {
-      this.checkSystemHealth();
-    }, this._SECONDS);
+    if (process.env.NODE_ENV !== "test") {
+      this.monitorInterval = setInterval(() => {
+        this.checkSystemHealth();
+      }, this._SECONDS);
+    }
   }
 
   stopMonitoring() {

@@ -8,7 +8,7 @@ module.exports = {
   username: process.env.DEV_DB_USER || "postgres",
   password: process.env.DEV_DB_PASS || "95a3FqXFsUDhxRd",
   database: process.env.DEV_DB_NAME || "postgres",
-  logging: console.log, // Hiển thị log SQL trong development
+  logging: false, // Hiển thị log SQL trong development
   sync: { enable: true, force: false, alter: true }, // Cẩn thận với force: true (xóa data)
   pool: {
     max: 50, // Số connection tối đa

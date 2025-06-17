@@ -1,4 +1,5 @@
-const User = require("../../core/entities/user.entity");
+const UserEntity = require("../../core/entities/user.entity");
+const { BadRequestError } = require("../../shared/core/error.response");
 
 class CreateUserUseCase {
   constructor(userRepository) {
@@ -6,8 +7,8 @@ class CreateUserUseCase {
   }
 
   async execute(userData) {
-    const user = new User(
-      null,
+    const user = new UserEntity(
+      undefined,
       userData.name,
       userData.email,
       userData.password
@@ -17,7 +18,7 @@ class CreateUserUseCase {
 
     const existingUser = await this.userRepository.findByEmail(user.email);
     if (existingUser) {
-      throw new Error("User already exists");
+      throw new BadRequestError("User already exists");
     }
 
     return await this.userRepository.create(user);

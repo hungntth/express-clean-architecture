@@ -3,7 +3,6 @@ const UserModel = require("../database/models/user.model");
 
 class UserRepository extends UserRepositoryInterface {
   async create(user) {
-    console.log("Creating user:", user);
     return await UserModel.create(user);
   }
 

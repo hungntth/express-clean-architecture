@@ -5,7 +5,7 @@ const {
   AuthFailureError,
 } = require("../../../shared/core/error.response");
 
-const User = sequelize.define(
+const UserModel = sequelize.define(
   "User",
   {
     id: {
@@ -55,7 +55,7 @@ const User = sequelize.define(
     hooks: {
       beforeCreate: async (user) => {
         if (user.email) {
-          const existingUser = await User.findOne({
+          const existingUser = await UserModel.findOne({
             where: { email: user.email },
           });
           if (existingUser) {
@@ -65,7 +65,7 @@ const User = sequelize.define(
       },
       beforeUpdate: async (user) => {
         if (user.changed("email")) {
-          const existingUser = await User.findOne({
+          const existingUser = await UserModel.findOne({
             where: { email: user.email },
           });
           if (existingUser && existingUser.id !== user.id) {
@@ -78,7 +78,7 @@ const User = sequelize.define(
 );
 
 // Instance methods
-User.prototype.toJSON = function () {
+UserModel.prototype.toJSON = function () {
   const values = { ...this.get() };
   delete values.password; // Loại bỏ password khi trả về JSON
   delete values.deletedAt; // Loại bỏ deletedAt trong soft delete
@@ -86,8 +86,8 @@ User.prototype.toJSON = function () {
 };
 
 // Static methods
-User.findByCredentials = async (email, password) => {
-  const user = await User.findOne({ where: { email } });
+UserModel.findByCredentials = async (email, password) => {
+  const user = await UserModel.findOne({ where: { email } });
   if (!user) {
     throw new AuthFailureError("Invalid login credentials");
   }
@@ -99,4 +99,4 @@ User.findByCredentials = async (email, password) => {
   return user;
 };
 
-module.exports = User;
+module.exports = UserModel;
