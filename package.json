@@ -1,55 +1,26 @@
 {
   "name": "express-clean-architecture",
   "version": "1.0.0",
-  "description": "As the project uses Yarn zero-install, there is no need to install the dependencies.",
   "main": "index.js",
   "scripts": {
-    "build": "tsoa spec-and-routes",
-    "dev": "concurrently 'nodemon' 'nodemon -x tsoa spec-and-routes'",
-    "lint": "prettier --check .",
-    "test": "jest --runInBand",
-    "typeorm": "env-cmd typeorm-ts-node-commonjs"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
   },
-  "repository": "git+https://github.com/hungntth/express-clean-architecture.git",
   "keywords": [],
   "author": "hungntth <1119thaihungnguyen@gmail.com>",
   "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/hungntth/express-clean-architecture/issues"
-  },
-  "homepage": "https://github.com/hungntth/express-clean-architecture#readme",
+  "description": "",
+  "repository": "https://github.com/hungntth/express-clean-architecture.git",
   "dependencies": {
-    "@tsoa/runtime": "^6.6.0",
-    "@types/promise.any": "^2.0.3",
+    "compression": "^1.8.0",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "jsonwebtoken": "^9.0.2",
+    "helmet": "^8.1.0",
+    "morgan": "^1.10.0",
     "pg": "^8.16.0",
-    "promise.any": "^2.0.6",
-    "reflect-metadata": "^0.2.2",
-    "swagger-ui-express": "^5.0.1",
-    "tsoa": "^6.6.0",
-    "tsyringe": "^4.10.0",
-    "typeorm": "^0.3.24",
-    "typeorm-naming-strategies": "^4.1.0",
-    "uuid": "^11.1.0",
-    "winston": "^3.17.0",
-    "zod": "^3.25.48"
+    "sequelize": "^6.37.7"
   },
   "devDependencies": {
-    "@types/express": "^5.0.2",
-    "@types/jest": "^29.5.14",
-    "@types/jsonwebtoken": "^9.0.9",
-    "@types/node": "^22.15.30",
-    "@types/pg": "^8.15.4",
-    "@types/swagger-ui-express": "^4.1.8",
-    "concurrently": "^9.1.2",
-    "env-cmd": "^10.1.0",
-    "jest": "^29.7.0",
-    "nodemon": "^3.1.10",
-    "ts-jest": "^29.3.4",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "nodemon": "^3.1.10"
   }
 }
